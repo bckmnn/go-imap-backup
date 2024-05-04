@@ -102,7 +102,7 @@ func main() {
 
 	// perform remote command, with retries
 	for i := 0; i < retries; i++ {
-		if err := cmdRemote(cmd); err == nil {
+		if err := cmdRemote(cmd); err != nil {
 			log.Printf("Error on %d. attempt: %s\n", i, err)
 			time.Sleep(time.Duration(retryDelaySeconds) * time.Second)
 		} else {
